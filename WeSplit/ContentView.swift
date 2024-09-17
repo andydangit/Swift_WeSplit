@@ -2,20 +2,31 @@
 //  ContentView.swift
 //  WeSplit
 //
-//  Created by FartFire on 9/17/24.
+//  Created by Andy Dang It on 9/17/24.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("We Split ")
+        NavigationStack{
+            Form {
+                Section{
+                    Text("Let's Split the check")
+                }
+                Section{
+                    Text("Input the total amount")
+                }
+                Section{
+                    Text("PlaceHolder")
+                    Text("PlaceHolder")
+                    Text("PlaceHolder")
+                    
+                }
+            }
+            .navigationTitle("SwiftUi")
+            .navigationBarTitleDisplayMode(.inline)       
         }
-        .padding()
     }
 }
 
