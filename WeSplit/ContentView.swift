@@ -14,7 +14,20 @@ struct ContentView: View {
     @State private var tipPercentage = 20
     
     let tipPercentages = [10, 15, 20, 25, 0]
+    
+    var totalTipAmount: Double {
+        let tipValue = checkAmount / 100 * Double(tipPercentage)
         
+        return tipValue
+    }
+    
+    var totalAmountWithTip: Double{
+        let grandTotal = checkAmount + totalTipAmount
+        
+        return grandTotal
+    }
+    
+    
     var totalPerPerson: Double {
         let peopleCount = Double (numberOfPeople + 2)
         let tipSelection = Double(tipPercentage)
@@ -38,8 +51,8 @@ struct ContentView: View {
                             Text("\($0) people")
                         }
                     }
-//                    This  allow the pickerstyler to move to another screen
-//                     .pickerStyle(.navigationLink)
+                    //                    This  allow the pickerstyler to move to another screen
+                    //                     .pickerStyle(.navigationLink)
                 }
                 
                 Section("Tip Amount"){
@@ -49,14 +62,31 @@ struct ContentView: View {
                         }
                     }
                     .pickerStyle(.segmented)
- 
-                        
                 }
-
+                
                 
                 Section {
-                    Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD" ))
+                    
+                    HStack{
+                        Text("Total Tip:")
+                        Spacer()
+                        Text(totalTipAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD" ))
+                        
+                    }
+                    HStack{
+                        Text("Total Amount:")
+                        Spacer()
+                        Text(totalAmountWithTip, format: .currency(code: Locale.current.currency?.identifier ?? "USD" ))
+                        
+                    }
+                    
+                    HStack{
+                        Text("Each Person Pay:")
+                        Spacer()
+                        Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD" ))
+                    }
                 }
+                
                 
             }
             .navigationTitle("Check Split")
