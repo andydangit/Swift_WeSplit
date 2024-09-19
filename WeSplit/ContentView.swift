@@ -19,8 +19,20 @@ struct ContentView: View {
         NavigationStack {
             Form {
                 Section{
-                    TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD") )
+                    TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .keyboardType(.decimalPad)
+                    
+                    Picker("Number of people", selection: $numberOfPeople){
+                        ForEach(2..<100 ) {
+                            Text("\($0) people")
+                        }
+                    }
+                    .pickerStyle(.navigationLink)
                 }
+                Section {
+                    Text(checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD" ))
+                }
+                
             }
             .navigationTitle("Splitting the Check")
             .navigationBarTitleDisplayMode(.inline)
