@@ -27,14 +27,14 @@ struct ContentView: View {
                             Text("\($0) people")
                         }
                     }
-                    .pickerStyle(.navigationLink)
+//                     .pickerStyle(.navigationLink)
                 }
                 Section {
                     Text(checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD" ))
                 }
                 
             }
-            .navigationTitle("Splitting the Check")
+            .navigationTitle("Check Split")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
